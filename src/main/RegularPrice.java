@@ -1,0 +1,22 @@
+package main;
+
+public class RegularPrice implements Price {
+    @Override
+    public int getPriceCode() {
+        return Movie.REGULAR;
+    }
+
+    @Override
+    public double getCharge(int daysRented) {
+        if (daysRented > 3) {
+            return (daysRented - 3) * 2;
+        }
+
+        return 2;
+    }
+
+    @Override
+    public int getFrequentRenterPoints(int daysRented) {
+        return 1;
+    }
+}
