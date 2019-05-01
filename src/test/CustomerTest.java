@@ -27,6 +27,22 @@ class CustomerTest {
 
     @Test
     void statement() {
-        assertTrue(customer.statement().startsWith("Rental Record for " + customer.getName()) && customer.statement().endsWith("frequent renter points"));
+        // Test if contains name
+        assertTrue(customer.statement().contains("for " + customerName));
+
+        // Test if amount is correct
+        customer.addRental(new Rental(new Movie("testmovie 1", Movie.CHILDRENS), 3));
+        customer.addRental(new Rental(new Movie("testmovie 2", Movie.REGULAR), 2));
+        customer.addRental(new Rental(new Movie("testmovie 3", Movie.NEW_RELEASE), 2));
+
+        assertTrue(customer.statement().contains("\t" + "\t" + 3 + "\t" + 1.5 + "\n"));
+        assertTrue(customer.statement().contains("\t" + "\t" + 2 + "\t" + 2.0 + "\n"));
+        assertTrue(customer.statement().contains("\t" + "\t" + 2 + "\t" + 6.0 + "\n"));
+
+        // Test if total amount is correct
+        assertTrue(customer.statement().contains("Amount owed is " + 9.5));
+
+        // Test if frequent renter points are correct
+        assertTrue(customer.statement().contains("earned 4 frequent"));
     }
 }

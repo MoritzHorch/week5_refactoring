@@ -9,6 +9,6 @@ public class NewReleasePrice implements Price {
     }
 
     public int getFrequentRenterPoints(int daysRented) {
-        return 0;
+        return 1;
     }
 }
