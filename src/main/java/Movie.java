@@ -1,11 +1,10 @@
-package main;
 
 public class Movie {
     public static final int CHILDRENS = 2;
     public static final int REGULAR = 0;
     public static final int NEW_RELEASE = 1;
+
     private String title;
-    private int priceCode;
     private Price price;
 
     public Movie(String newtitle, int newpriceCode) {
@@ -13,8 +12,12 @@ public class Movie {
         setPriceCode(newpriceCode);
     }
 
+    public Price getPrice() {
+        return price;
+    }
+
     public int getPriceCode() {
-        return priceCode;
+        return price.getPriceCode();
     }
     public String getTitle (){
         return title;

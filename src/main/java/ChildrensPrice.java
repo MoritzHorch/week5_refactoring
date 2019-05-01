@@ -1,21 +1,17 @@
-package main;
 
-public class RegularPrice implements Price {
-    @Override
+public class ChildrensPrice implements Price {
     public int getPriceCode() {
-        return Movie.REGULAR;
+        return Movie.CHILDRENS;
     }
 
-    @Override
     public double getCharge(int daysRented) {
         if (daysRented > 3) {
-            return (daysRented - 3) * 2;
+            return (daysRented - 3) * 1.5;
         }
 
-        return 2;
+        return 1.5;
     }
 
-    @Override
     public int getFrequentRenterPoints(int daysRented) {
         return 1;
     }
